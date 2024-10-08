@@ -1,25 +1,35 @@
-/* General Styles */
-body {
-    font-family: 'Roboto', sans-serif;
+:root {
+    --primary-color: #007bff;
+    --secondary-color: #6a11cb;
+    --text-color: #333;
+    --bg-color: #f8f9fa;
+    --card-bg: #fff;
+    --sidebar-bg: #343a40;
+}
+
+* {
+    box-sizing: border-box;
     margin: 0;
     padding: 0;
-    background-color: #f8f9fa;
-    color: #333;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-color);
     display: flex;
     min-height: 100vh;
 }
 
 .container {
-    width: 85%;
+    width: 90%;
     max-width: 1200px;
     margin: auto;
 }
 
-/* Sidebar Styles */
 .sidebar {
-    background-color: #343a40;
-    color: #fff;
-    width: 250px; /* Default width for larger screens */
+    background-color: var(--sidebar-bg);
+    width: 250px;
     padding: 20px;
     position: fixed;
     top: 0;
@@ -28,8 +38,8 @@ body {
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
-    align-items: center; /* Centered alignment for profile picture */
-    transition: transform 0.3s ease-in-out; /* Smooth transition for sliding effect */
+    align-items: center;
+    transition: transform 0.3s ease-in-out;
 }
 
 .profile-pic {
@@ -37,20 +47,18 @@ body {
     height: 150px;
     margin-bottom: 20px;
     border-radius: 50%;
-    overflow: hidden; /* Ensures the image is circular */
+    overflow: hidden;
 }
 
 .profile-pic img {
     width: 100%;
     height: 100%;
-    object-fit: cover; /* Ensures the image covers the whole container */
+    object-fit: cover;
 }
 
 .sidebar nav ul {
     list-style: none;
-    padding: 0;
-    width: 100%;
-    text-align: center; /* Center the text for a balanced look */
+    text-align: center;
 }
 
 .sidebar nav ul li {
@@ -60,82 +68,55 @@ body {
 .sidebar nav ul li a {
     color: #fff;
     text-decoration: none;
-    font-weight: bold;
-    display: block;
     padding: 10px 20px;
+    display: block;
     border-radius: 4px;
-    transition: background 0.3s ease;
+    transition: background-color 0.3s;
 }
 
 .sidebar nav ul li a:hover {
-    background-color: #495057;
+    background-color: var(--primary-color);
 }
 
-/* Sidebar Toggle Button */
-.sidebar-toggle {
-    display: none;
-    position: absolute;
-    top: 15px;
-    left: 15px;
-    background-color: #343a40;
-    color: #fff;
-    border: none;
-    padding: 10px;
-    cursor: pointer;
-    z-index: 1000;
-}
-
-/* Main Content */
 .main-content {
     margin-left: 250px;
     padding: 20px;
     flex-grow: 1;
 }
 
-/* Hero Section */
 .hero {
-    height: 60vh;
     display: flex;
     justify-content: center;
     align-items: center;
-    background: linear-gradient(135deg, #007bff 30%, #6a11cb 100%);
+    height: 60vh;
+    background: linear-gradient(135deg, var(--primary-color) 30%, var(--secondary-color) 100%);
     color: #fff;
     text-align: center;
 }
 
 .hero-content h1 {
     font-family: 'Montserrat', sans-serif;
-    font-size: 2.5rem;
-    margin-bottom: 10px;
+    font-size: clamp(2rem, 5vw, 3rem);
 }
 
 .hero-content p {
     font-size: 1.2rem;
-    margin-bottom: 20px;
 }
 
 .btn {
     background: #fff;
-    color: #007bff;
+    color: var(--primary-color);
     padding: 10px 20px;
-    text-decoration: none;
     border-radius: 5px;
-    transition: background 0.3s ease;
-    font-weight: bold;
+    text-decoration: none;
+    transition: background-color 0.3s;
 }
 
 .btn:hover {
-    background: #0056b3;
+    background-color: var(--primary-color);
     color: #fff;
 }
 
-/* About Section */
-.about {
-    padding: 60px 0;
-    background: #f9f9f9;
-}
-
-/* Skills, Experience, Education, Achievements - Card Layout */
 .card-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -143,140 +124,7 @@ body {
 }
 
 .card {
-    background-color: #fff;
+    background-color: var(--card-bg);
     padding: 20px;
     border-radius: 10px;
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
-    text-align: center;
-}
-
-/* Projects Section - Uses the same card layout */
-.projects {
-    padding: 60px 0;
-}
-
-.projects .card-grid .card {
-    text-align: left;
-}
-
-.projects .card a {
-    display: block;
-    margin-top: 10px;
-    color: #007bff;
-    text-decoration: none;
-}
-
-.projects .card a:hover {
-    text-decoration: underline;
-}
-
-/* Contact Section */
-.contact {
-    padding: 60px 0;
-    background: #f9f9f9;
-}
-
-.contact form {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 10px;
-}
-
-.contact form input,
-.contact form textarea {
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    width: 100%;
-}
-
-.contact form button {
-    background-color: #007bff;
-    color: white;
-    padding: 10px 20px;
-    border-radius: 5px;
-    border: none;
-    cursor: pointer;
-    transition: background 0.3s ease;
-}
-
-.contact form button:hover {
-    background-color: #0056b3;
-}
-
-.social-links {
-    margin-top: 20px;
-    text-align: center;
-}
-
-.social-links a {
-    margin-right: 10px;
-    color: #007bff;
-    text-decoration: none;
-}
-
-.social-links a:hover {
-    text-decoration: underline;
-}
-
-/* Footer */
-footer {
-    background-color: #343a40;
-    color: #fff;
-    text-align: center;
-    padding: 20px;
-    margin-top: 40px;
-}
-
-/* Responsive Styles */
-@media (max-width: 768px) {
-    .sidebar {
-        width: 200px; /* Reduce width on mobile */
-        padding: 15px; /* Reduce padding */
-        transform: translateX(-200px); /* Hide sidebar by shifting it off-screen */
-    }
-
-    .sidebar.active {
-        transform: translateX(0); /* Slide sidebar into view when active */
-    }
-
-    .sidebar-toggle {
-        display: block;
-    }
-
-    .main-content {
-        margin-left: 0;
-        padding-top: 50px; /* Adjust padding to accommodate the toggle button */
-    }
-
-    .profile-pic {
-        width: 80px; /* Smaller profile picture on mobile */
-        height: 80px;
-        margin-bottom: 15px; /* Reduce margin */
-    }
-
-    .sidebar nav ul li {
-        margin-bottom: 15px; /* Reduce spacing between items */
-    }
-
-    .sidebar nav ul li a {
-        padding: 8px 15px; /* Adjust padding for smaller screen */
-        font-size: 0.9rem; /* Smaller font size */
-    }
-}
-
-@media (max-width: 480px) {
-    .sidebar {
-        width: 180px; /* Further reduce width for very small screens */
-        transform: translateX(-180px); /* Adjust transform for new width */
-    }
-
-    .profile-pic {
-        width: 70px; /* Further reduce profile picture size */
-        height: 70px;
-    }
-
-    .sidebar nav ul li a {
-        font-size: 0.85rem; /* Further reduce font size */
-    }
-}
+    box-shadow: 
