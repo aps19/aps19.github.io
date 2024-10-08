@@ -1,14 +1,16 @@
 const toggleDarkMode = document.getElementById('toggle-dark-mode');
 const body = document.body;
 
+// Toggle sidebar visibility on mobile
 document.getElementById('sidebar-toggle').addEventListener('click', function() {
     const sidebar = document.getElementById('sidebar');
     sidebar.classList.toggle('active');
 });
 
-// Set default to dark mode
+// Set default mode to dark mode on page load
 body.classList.add('dark-mode');
 
+// Dark Mode Toggle Functionality
 toggleDarkMode.addEventListener('click', () => {
     if (body.classList.contains('dark-mode')) {
         body.classList.remove('dark-mode');
@@ -21,15 +23,16 @@ toggleDarkMode.addEventListener('click', () => {
     }
 });
 
-
-
-// Smooth Scrolling
+// Smooth Scrolling for navigation links
 document.querySelectorAll('nav a').forEach(anchor => {
     anchor.addEventListener('click', function(e) {
         e.preventDefault();
-        document.querySelector(this.getAttribute('href')).scrollIntoView({
-            behavior: 'smooth'
-        });
+        const targetSection = document.querySelector(this.getAttribute('href'));
+        if (targetSection) {
+            targetSection.scrollIntoView({
+                behavior: 'smooth',
+                block: 'start'
+            });
+        }
     });
 });
-
