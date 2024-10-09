@@ -1,3 +1,4 @@
+/* Existing CSS variables and base styles */
 :root {
     --primary-color: #007bff;
     --secondary-color: #6a11cb;
@@ -7,6 +8,7 @@
     --sidebar-bg: #343a40;
 }
 
+/* Dark mode styles */
 body.dark-mode {
     --bg-color: #121212;
     --text-color: #fff;
@@ -41,7 +43,8 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    transition: transform 0.3s ease-in-out;
+    transition: left 0.3s ease-in-out;
+    z-index: 1000;
 }
 
 .profile-pic {
@@ -81,18 +84,53 @@ body {
     background-color: var(--primary-color);
 }
 
+/* Sidebar Toggle Button */
+.sidebar-toggle {
+    display: none; /* Hidden on desktop */
+}
+
+@media (max-width: 768px) {
+    .sidebar {
+        left: -250px; /* Hide sidebar off-screen */
+    }
+
+    .sidebar.active {
+        left: 0; /* Show sidebar when active */
+    }
+
+    .sidebar-toggle {
+        display: block;
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        background-color: transparent;
+        color: #fff;
+        border: none;
+        font-size: 1.5rem;
+        cursor: pointer;
+    }
+}
+
 /* Main Content */
 .main-content {
     margin-left: 250px; /* Leaves space for the sidebar */
     padding: 40px 20px;
     flex-grow: 1;
     background-color: var(--bg-color);
+    transition: margin-left 0.3s ease-in-out;
+}
+
+@media (max-width: 768px) {
+    .main-content {
+        margin-left: 0;
+        padding-top: 60px;
+    }
 }
 
 /* Section Spacing */
 section {
-    margin-bottom: 80px; /* Adds spacing between sections */
-    padding: 40px;
+    margin-bottom: 120px; /* Increased spacing between sections */
+    padding: 60px;
     background-color: var(--card-bg);
     border-radius: 10px;
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
@@ -103,11 +141,13 @@ section {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 60vh;
+    min-height: 60vh;
     background: linear-gradient(135deg, var(--primary-color) 30%, var(--secondary-color) 100%);
     color: #fff;
     text-align: center;
     flex-direction: column;
+    border-radius: 0; /* Remove border-radius for full-width hero */
+    margin-bottom: 0; /* Remove bottom margin for hero section */
 }
 
 .hero-content h1 {
@@ -120,64 +160,7 @@ section {
     font-size: 1.2rem;
 }
 
-.btn {
-    background: #fff;
-    color: var(--primary-color);
-    padding: 10px 20px;
-    border-radius: 5px;
-    text-decoration: none;
-    transition: background-color 0.3s;
-}
-
-.btn:hover {
-    background-color: var(--primary-color);
-    color: #fff;
-}
-
-/* Card Grid */
-.card-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 20px;
-    justify-items: center;
-    align-items: center;
-}
-
-.card {
-    background-color: var(--card-bg);
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
-    text-align: center;
-    width: 100%;
-    max-width: 300px;
-}
-
-/* Contact Form */
-.contact form input,
-.contact form textarea {
-    padding: 10px;
-    border-radius: 5px;
-    border: 1px solid #ccc;
-    margin-bottom: 10px;
-    width: 100%;
-}
-
-.contact form button {
-    background-color: var(--primary-color);
-    color: white;
-    padding: 10px 20px;
-    border-radius: 5px;
-    border: none;
-    cursor: pointer;
-    transition: background 0.3s ease;
-    width: 100%;
-}
-
-.contact form button:hover {
-    background-color: var(--secondary-color);
-}
-
+/* Footer */
 footer {
     text-align: center;
     padding: 20px;
@@ -186,36 +169,6 @@ footer {
 }
 
 /* Media Queries for Mobile */
-@media (max-width: 768px) {
-    .sidebar {
-        transform: translateX(-100%);
-        visibility: hidden;
-    }
-
-    .sidebar.active {
-        transform: translateX(0);
-        visibility: visible;
-    }
-
-    .sidebar-toggle {
-        display: block;
-        position: fixed;
-        top: 10px;
-        left: 10px;
-        background-color: var(--primary-color);
-        color: white;
-        border: none;
-        padding: 10px;
-        cursor: pointer;
-        z-index: 1000;
-    }
-
-    .main-content {
-        margin-left: 0;
-        padding-top: 60px;
-    }
-}
-
 @media (max-width: 480px) {
     .profile-pic {
         width: 100px;
@@ -228,9 +181,5 @@ footer {
 
     .hero-content p {
         font-size: 1rem;
-    }
-
-    .btn {
-        padding: 8px 15px;
     }
 }
