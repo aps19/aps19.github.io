@@ -25,6 +25,7 @@ body {
     background-color: var(--bg-color);
     color: var(--text-color);
     display: flex;
+    flex-direction: column;
     min-height: 100vh;
 }
 
@@ -88,9 +89,9 @@ body {
     background-color: var(--bg-color);
 }
 
-/* Sections */
+/* Section Spacing */
 section {
-    margin-bottom: 60px; /* Adds spacing between sections */
+    margin-bottom: 80px; /* Adds spacing between sections */
     padding: 40px;
     background-color: var(--card-bg);
     border-radius: 10px;
