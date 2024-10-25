@@ -1,42 +1,24 @@
-:root {
-    --primary-color: #007bff;
-    --secondary-color: #6a11cb;
-    --text-color: #333;
-    --bg-color: #f8f9fa;
-    --card-bg: #fff;
-    --sidebar-bg: #343a40;
-}
-
-body.dark-mode {
-    --bg-color: #121212;
-    --text-color: #fff;
-    --card-bg: #1e1e1e;
-    --sidebar-bg: #1a1a1a;
-}
-
-* {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-}
-
+/* General Styles */
 body {
     font-family: 'Roboto', sans-serif;
-    background-color: var(--bg-color);
-    color: var(--text-color);
+    margin: 0;
+    padding: 0;
+    background-color: #f8f9fa;
+    color: #333;
     display: flex;
-    flex-direction: column;
     min-height: 100vh;
 }
 
 .container {
-    width: 90%;
+    width: 85%;
     max-width: 1200px;
     margin: auto;
 }
 
+/* Sidebar Styles */
 .sidebar {
-    background-color: var(--sidebar-bg);
+    background-color: #343a40;
+    color: #fff;
     width: 250px;
     padding: 20px;
     position: fixed;
@@ -46,15 +28,7 @@ body {
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
-    align-items: center;
-    transition: transform 0.3s ease-in-out;
-    transform: translateX(-100%);
-    visibility: hidden;
-}
-
-.sidebar.active {
-    transform: translateX(0);
-    visibility: visible;
+    align-items: center; /* Centered alignment for profile picture */
 }
 
 .profile-pic {
@@ -62,18 +36,20 @@ body {
     height: 150px;
     margin-bottom: 20px;
     border-radius: 50%;
-    overflow: hidden;
+    overflow: hidden; /* Ensures the image is circular */
 }
 
 .profile-pic img {
     width: 100%;
     height: 100%;
-    object-fit: cover;
+    object-fit: cover; /* Ensures the image covers the whole container */
 }
 
 .sidebar nav ul {
     list-style: none;
-    text-align: center;
+    padding: 0;
+    width: 100%;
+    text-align: center; /* Center the text for a balanced look */
 }
 
 .sidebar nav ul li {
@@ -83,55 +59,68 @@ body {
 .sidebar nav ul li a {
     color: #fff;
     text-decoration: none;
-    padding: 10px 20px;
+    font-weight: bold;
     display: block;
+    padding: 10px 20px;
     border-radius: 4px;
-    transition: background-color 0.3s;
+    transition: background 0.3s ease;
 }
 
 .sidebar nav ul li a:hover {
-    background-color: var(--primary-color);
+    background-color: #495057;
 }
 
+/* Main Content */
 .main-content {
-    margin-left: 0;
+    margin-left: 250px;
     padding: 20px;
     flex-grow: 1;
 }
 
+/* Hero Section */
 .hero {
+    height: 60vh;
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 60vh;
-    background: linear-gradient(135deg, var(--primary-color) 30%, var(--secondary-color) 100%);
+    background: linear-gradient(135deg, #007bff 30%, #6a11cb 100%);
     color: #fff;
     text-align: center;
 }
 
 .hero-content h1 {
     font-family: 'Montserrat', sans-serif;
-    font-size: clamp(2rem, 5vw, 3rem);
+    font-size: 2.5rem;
+    margin-bottom: 10px;
 }
 
 .hero-content p {
     font-size: 1.2rem;
+    margin-bottom: 20px;
 }
 
 .btn {
     background: #fff;
-    color: var(--primary-color);
+    color: #007bff;
     padding: 10px 20px;
-    border-radius: 5px;
     text-decoration: none;
-    transition: background-color 0.3s;
+    border-radius: 5px;
+    transition: background 0.3s ease;
+    font-weight: bold;
 }
 
 .btn:hover {
-    background-color: var(--primary-color);
+    background: #0056b3;
     color: #fff;
 }
 
+/* About Section */
+.about {
+    padding: 60px 0;
+    background: #f9f9f9;
+}
+
+/* Skills, Experience, Education, Achievements - Card Layout */
 .card-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -139,22 +128,55 @@ body {
 }
 
 .card {
-    background-color: var(--card-bg);
+    background-color: #fff;
     padding: 20px;
     border-radius: 10px;
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
     text-align: center;
 }
 
+/* Projects Section - Uses the same card layout */
+.projects {
+    padding: 60px 0;
+}
+
+.projects .card-grid .card {
+    text-align: left;
+}
+
+.projects .card a {
+    display: block;
+    margin-top: 10px;
+    color: #007bff;
+    text-decoration: none;
+}
+
+.projects .card a:hover {
+    text-decoration: underline;
+}
+
+/* Contact Section */
+.contact {
+    padding: 60px 0;
+    background: #f9f9f9;
+}
+
+.contact form {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 10px;
+}
+
 .contact form input,
 .contact form textarea {
     padding: 10px;
-    border-radius: 5px;
     border: 1px solid #ccc;
+    border-radius: 5px;
+    width: 100%;
 }
 
 .contact form button {
-    background-color: var(--primary-color);
+    background-color: #007bff;
     color: white;
     padding: 10px 20px;
     border-radius: 5px;
@@ -164,55 +186,29 @@ body {
 }
 
 .contact form button:hover {
-    background-color: var(--secondary-color);
+    background-color: #0056b3;
 }
 
-@media (max-width: 768px) {
-    .sidebar {
-        width: 250px;
-        transform: translateX(-100%);
-        visibility: hidden;
-    }
-
-    .sidebar.active {
-        transform: translateX(0);
-        visibility: visible;
-    }
-
-    .sidebar-toggle {
-        display: block;
-        position: fixed;
-        top: 10px;
-        left: 10px;
-        background-color: var(--primary-color);
-        color: white;
-        border: none;
-        padding: 10px;
-        cursor: pointer;
-        z-index: 1000;
-    }
-
-    .main-content {
-        margin-left: 0;
-        padding-top: 60px;
-    }
+.social-links {
+    margin-top: 20px;
+    text-align: center;
 }
 
-@media (max-width: 480px) {
-    .profile-pic {
-        width: 100px;
-        height: 100px;
-    }
+.social-links a {
+    margin-right: 10px;
+    color: #007bff;
+    text-decoration: none;
+}
 
-    .hero-content h1 {
-        font-size: 1.5rem;
-    }
+.social-links a:hover {
+    text-decoration: underline;
+}
 
-    .hero-content p {
-        font-size: 1rem;
-    }
-
-    .btn {
-        padding: 8px 15px;
-    }
+/* Footer */
+footer {
+    background-color: #343a40;
+    color: #fff;
+    text-align: center;
+    padding: 20px;
+    margin-top: 40px;
 }
