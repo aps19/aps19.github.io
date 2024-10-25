@@ -1,5 +1,6 @@
 // Get references to DOM elements
 const body = document.body;
+// Sidebar Toggle Functionality
 const sidebar = document.getElementById('sidebar');
 const sidebarToggle = document.getElementById('sidebar-toggle');
 const toggleDarkMode = document.getElementById('toggle-dark-mode');
@@ -11,10 +12,13 @@ body.classList.add('dark-mode');
 // Update the dark mode toggle button text/icon
 toggleDarkMode.textContent = 'Light Mode';
 
-// Toggle sidebar visibility on mobile
+
+
+// Toggle sidebar visibility
 sidebarToggle.addEventListener('click', () => {
     sidebar.classList.toggle('active');
 });
+
 
 // Close sidebar when a navigation link is clicked (on mobile)
 navLinks.forEach(link => {
