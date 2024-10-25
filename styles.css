@@ -1,4 +1,4 @@
-/* Existing CSS variables and base styles */
+/* Base Styles */
 :root {
     --primary-color: #007bff;
     --secondary-color: #6a11cb;
@@ -8,20 +8,6 @@
     --sidebar-bg: #343a40;
 }
 
-/* Dark mode styles */
-body.dark-mode {
-    --bg-color: #121212;
-    --text-color: #fff;
-    --card-bg: #1e1e1e;
-    --sidebar-bg: #1a1a1a;
-}
-
-* {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-}
-
 body {
     font-family: 'Roboto', sans-serif;
     background-color: var(--bg-color);
@@ -29,6 +15,7 @@ body {
     display: flex;
     flex-direction: column;
     min-height: 100vh;
+    transition: background-color 0.3s, color 0.3s;
 }
 
 /* Sidebar */
@@ -38,7 +25,7 @@ body {
     padding: 20px;
     position: fixed;
     top: 0;
-    left: 0;
+    left: -250px;
     height: 100%;
     display: flex;
     flex-direction: column;
@@ -47,139 +34,72 @@ body {
     z-index: 1000;
 }
 
-.profile-pic {
-    width: 150px;
-    height: 150px;
-    margin-bottom: 20px;
-    border-radius: 50%;
-    overflow: hidden;
-}
-
-.profile-pic img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-}
-
-.sidebar nav ul {
-    list-style: none;
-    text-align: center;
-    margin-top: 20px;
-}
-
-.sidebar nav ul li {
-    margin-bottom: 20px;
-}
-
-.sidebar nav ul li a {
-    color: #fff;
-    text-decoration: none;
-    padding: 10px 20px;
-    display: block;
-    border-radius: 4px;
-    transition: background-color 0.3s;
-}
-
-.sidebar nav ul li a:hover {
-    background-color: var(--primary-color);
+.sidebar.active {
+    left: 0;
 }
 
 /* Sidebar Toggle Button */
 .sidebar-toggle {
-    display: none; /* Hidden on desktop */
-}
-
-@media (max-width: 768px) {
-    .sidebar {
-        left: -250px; /* Hide sidebar off-screen */
-    }
-
-    .sidebar.active {
-        left: 0; /* Show sidebar when active */
-    }
-
-    .sidebar-toggle {
-        display: block;
-        position: absolute;
-        top: 20px;
-        right: 20px;
-        background-color: transparent;
-        color: #fff;
-        border: none;
-        font-size: 1.5rem;
-        cursor: pointer;
-    }
+    position: absolute;
+    top: 20px;
+    left: 260px;
+    background-color: transparent;
+    color: #fff;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    z-index: 1001;
 }
 
 /* Main Content */
 .main-content {
-    margin-left: 250px; /* Leaves space for the sidebar */
+    margin-left: 0;
     padding: 40px 20px;
     flex-grow: 1;
     background-color: var(--bg-color);
     transition: margin-left 0.3s ease-in-out;
 }
 
-@media (max-width: 768px) {
-    .main-content {
-        margin-left: 0;
-        padding-top: 60px;
-    }
-}
-
-/* Section Spacing */
-section {
-    margin-bottom: 120px; /* Increased spacing between sections */
-    padding: 60px;
+/* Section Cards */
+.section-card {
+    margin-bottom: 40px;
+    padding: 20px;
     background-color: var(--card-bg);
     border-radius: 10px;
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
 }
 
-/* Hero Section */
-.hero {
+/* Individual Cards */
+.card-grid {
     display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 60vh;
-    background: linear-gradient(135deg, var(--primary-color) 30%, var(--secondary-color) 100%);
-    color: #fff;
-    text-align: center;
-    flex-direction: column;
-    border-radius: 0; /* Remove border-radius for full-width hero */
-    margin-bottom: 0; /* Remove bottom margin for hero section */
+    flex-wrap: wrap;
+    gap: 20px;
 }
 
-.hero-content h1 {
-    font-family: 'Montserrat', sans-serif;
-    font-size: clamp(2rem, 5vw, 3rem);
-    margin-bottom: 20px;
-}
-
-.hero-content p {
-    font-size: 1.2rem;
-}
-
-/* Footer */
-footer {
-    text-align: center;
+.card {
+    background-color: var(--card-bg);
     padding: 20px;
-    background-color: var(--sidebar-bg);
-    color: white;
+    border-radius: 8px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    flex: 1 1 calc(33.333% - 20px);
+    text-align: center;
 }
 
-/* Media Queries for Mobile */
-@media (max-width: 480px) {
-    .profile-pic {
-        width: 100px;
-        height: 100px;
+/* Sidebar Mobile Behavior */
+@media (max-width: 768px) {
+    .sidebar {
+        left: -250px;
     }
 
-    .hero-content h1 {
-        font-size: 1.5rem;
+    .sidebar.active {
+        left: 0;
     }
 
-    .hero-content p {
-        font-size: 1rem;
+    .sidebar-toggle {
+        left: 20px;
+    }
+
+    .main-content {
+        margin-left: 0;
     }
 }
