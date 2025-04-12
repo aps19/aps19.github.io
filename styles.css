@@ -141,11 +141,33 @@ form button:hover {
     background: #2980b9;
 }
 
-.social-links a {
+.social-links {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+}
+
+.social-links .social-icon {
+    display: inline-flex;
+    align-items: center;
     text-decoration: none;
-    color: #3498db;
-    margin-right: 15px;
-    font-weight: bold;
+    color: #fff;
+    background-color: rgba(255, 255, 255, 0.2);
+    padding: 8px 15px;
+    border-radius: 50px;
+    transition: all 0.3s ease;
+    font-size: 0.9rem;
+}
+
+.social-links .social-icon i {
+    margin-right: 8px;
+    font-size: 1.1rem;
+}
+
+.social-links .social-icon:hover {
+    background-color: rgba(255, 255, 255, 0.4);
+    transform: translateY(-3px);
 }
 
 footer {
@@ -153,4 +175,37 @@ footer {
     text-align: center;
     color: #7f8c8d;
     padding: 10px;
-} 
+}
+
+@media (max-width: 768px) {
+    .sidebar {
+        width: 100%;
+        position: static;
+        height: auto;
+        padding: 10px;
+    }
+
+    .sidebar nav ul li {
+        display: inline-block;
+        margin: 5px;
+    }
+
+    .main-content {
+        margin-left: 0;
+        width: 100%;
+        padding: 10px;
+    }
+
+    .hero {
+        height: auto;
+        padding: 40px 20px;
+    }
+
+    .hero-content h1 {
+        font-size: 1.8rem;
+    }
+
+    .hero-content p {
+        font-size: 1rem;
+    }
+}
