@@ -147,6 +147,129 @@ body {
     margin-top: 20px;
 }
 
+.publication-item {
+    margin-bottom: 20px;
+    background: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.publication-authors {
+    color: #555;
+    font-size: 0.95rem;
+    margin-bottom: 8px;
+}
+
+.publication-title {
+    font-weight: 700;
+    font-size: 1.1rem;
+    color: #2c3e50;
+    margin-bottom: 8px;
+}
+
+.publication-venue {
+    color: #666;
+    font-size: 0.9rem;
+    font-style: italic;
+    margin-bottom: 12px;
+}
+
+.publication-links {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.pub-link, .bibtex-toggle {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 8px 14px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-decoration: none;
+}
+
+.pub-link {
+    background: #3498db;
+    color: #fff;
+    border: none;
+}
+
+.pub-link:hover {
+    background: #2980b9;
+    transform: translateY(-2px);
+}
+
+.bibtex-toggle {
+    background: #ecf0f1;
+    color: #2c3e50;
+    border: 1px solid #bdc3c7;
+}
+
+.bibtex-toggle:hover {
+    background: #d5dbdb;
+}
+
+.bibtex-toggle.active {
+    background: #2c3e50;
+    color: #fff;
+}
+
+.bibtex-container {
+    margin-top: 15px;
+    border-radius: 8px;
+    overflow: hidden;
+    border: 1px solid #ddd;
+}
+
+.bibtex-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 15px;
+    background: #2c3e50;
+    color: #fff;
+    font-size: 0.9rem;
+}
+
+.copy-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    padding: 5px 12px;
+    background: #3498db;
+    color: #fff;
+    border: none;
+    border-radius: 15px;
+    font-size: 0.8rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.copy-btn:hover {
+    background: #2980b9;
+}
+
+.copy-btn.copied {
+    background: #27ae60;
+}
+
+.bibtex-code {
+    background: #f8f9fa;
+    padding: 15px;
+    margin: 0;
+    font-family: 'Courier New', monospace;
+    font-size: 0.8rem;
+    line-height: 1.5;
+    overflow-x: auto;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+}
+
 .publication-list li {
     margin-bottom: 10px;
     background: #fff;
