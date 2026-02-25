@@ -10,6 +10,7 @@ body {
     display: flex;
     min-height: 100vh;
     color: #333;
+    overflow-x: hidden;
 }
 
 .sidebar {
@@ -62,13 +63,15 @@ body {
     display: flex;
     align-items: flex-end;
     justify-content: flex-start;
-    height: 80vh;
+    min-height: 80vh;
+    height: auto;
     background-color: #1a1a2e;
     color: #fff;
     text-align: left;
     padding: 40px;
     position: relative;
     overflow: hidden;
+    box-sizing: border-box;
 }
 
 .hero-bg-img {
@@ -94,13 +97,15 @@ body {
 
 .hero-content {
     background: rgba(0, 0, 0, 0.7);
-    padding: 30px 40px;
+    padding: 25px 30px;
     border-radius: 12px;
     -webkit-backdrop-filter: blur(8px);
     backdrop-filter: blur(8px);
-    max-width: 500px;
+    max-width: 450px;
+    width: 100%;
     position: relative;
     z-index: 3;
+    box-sizing: border-box;
 }
 
 .hero-content h1 {
@@ -265,37 +270,40 @@ footer {
     }
 
     .hero {
-        height: 70vh;
-        padding: 20px;
+        min-height: 60vh;
+        height: auto;
+        padding: 15px;
         align-items: flex-end;
         justify-content: flex-start;
     }
 
     .hero-content {
-        padding: 20px;
+        padding: 15px;
         max-width: 100%;
+        width: calc(100% - 10px);
     }
 
     .hero-content h1 {
-        font-size: 1.6rem;
+        font-size: 1.4rem;
     }
 
     .hero-content p {
-        font-size: 0.95rem;
+        font-size: 0.9rem;
+        margin-bottom: 10px;
     }
 
     .hero-content .social-links {
         flex-wrap: wrap;
-        gap: 8px;
+        gap: 6px;
     }
 
     .social-links .social-icon {
-        padding: 6px 10px;
-        font-size: 0.8rem;
+        padding: 5px 8px;
+        font-size: 0.75rem;
     }
 
     .social-links .social-icon i {
-        margin-right: 5px;
+        margin-right: 4px;
     }
 
     .container {
