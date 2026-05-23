@@ -141,12 +141,16 @@ function parseBibtex(bibtex) {
         result.authorsFormatted = authors.join(', ');
     }
     
-    // Generate DOI URL from key if it looks like a DOI
-    if (result.key && result.key.includes('/')) {
-        result.doi = result.key;
-        result.url = 'https://doi.org/' + result.key;
-    } else if (result.doi) {
-        result.url = 'https://doi.org/' + result.doi;
+    // Set URL based on available fields or key
+    if (!result.url) {
+        if (result.key && result.key.startsWith('http')) {
+            result.url = result.key;
+        } else if (result.key && result.key.includes('/')) {
+            result.doi = result.key;
+            result.url = 'https://doi.org/' + result.key;
+        } else if (result.doi) {
+            result.url = 'https://doi.org/' + result.doi;
+        }
     }
     
     // Format venue
