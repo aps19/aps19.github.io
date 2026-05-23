@@ -227,6 +227,7 @@ function loadPublications() {
                 pubElement.dataset.key = pub.key || '';
                 
                 pubElement.innerHTML = `
+                    ${pub.image ? `<div class="publication-image"><img src="${pub.image}" alt="Architecture for ${pub.title}" style="max-width: 100%; height: auto; border-radius: 8px; margin-bottom: 10px;"></div>` : ''}
                     <div class="publication-content">
                         <p class="publication-authors">${pub.authorsFormatted || pub.author || ''}</p>
                         <p class="publication-title">"${pub.title || ''}"</p>
