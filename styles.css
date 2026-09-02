@@ -576,30 +576,19 @@ footer {
 
 .timeline {
     position: relative;
-    max-width: 800px;
+    max-width: 1200px;
     margin: 0 auto;
-    padding-left: 40px;
-}
-
-.timeline::before {
-    content: '';
-    position: absolute;
-    left: 15px;
-    top: 0;
-    bottom: 0;
-    width: 3px;
-    background: linear-gradient(to bottom, #3498db, #2c3e50);
-    border-radius: 2px;
+    column-count: 2;
+    column-gap: 50px;
+    padding-left: 45px;
 }
 
 .timeline-item {
     position: relative;
     margin-bottom: 30px;
     padding-left: 30px;
-}
-
-.timeline-item:last-child {
-    margin-bottom: 0;
+    break-inside: avoid-column;
+    -webkit-column-break-inside: avoid;
 }
 
 .timeline-icon {
@@ -655,13 +644,10 @@ footer {
 
 @media (max-width: 768px) {
     .timeline {
+        column-count: 1;
         padding-left: 30px;
     }
-    
-    .timeline::before {
-        left: 10px;
-    }
-    
+
     .timeline-icon {
         left: -30px;
         width: 28px;
